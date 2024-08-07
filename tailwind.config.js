@@ -8,7 +8,13 @@ export default withMT({
       spartan: ["League Spartan", "sans-serif"],
       hind: ["Hind", "sans-serif"],
     },
-    extend: {},
+    extend: {
+      colors:{
+        primary:"#C6A650",
+        secondary:"#FCF976",
+        third:"#010000",
+      }
+    },
   },
   plugins: [],
 });

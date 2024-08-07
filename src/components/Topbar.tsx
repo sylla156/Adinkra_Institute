@@ -48,7 +48,7 @@ const Topbar = () => {
             href={contact.link}
             className="text-sm font-semibold leading-6 text-gray-900"
           >
-            <Button size="sm">
+            <Button size="sm" className="bg-primary">
               {contact.name} <span aria-hidden="true">&rarr;</span>
             </Button>
           </a>
@@ -100,7 +100,9 @@ const Topbar = () => {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  <Button> {contact.name}</Button>
+                  <Button className="bg-primary">
+                    {contact.name} <span aria-hidden="true">&rarr;</span>
+                  </Button>
                 </a>
               </div>
             </div>
