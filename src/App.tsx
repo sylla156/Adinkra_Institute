@@ -1,5 +1,6 @@
 import BackgroundColor from './components/BackgroundColor'
 import About from './containers/About'
+import Contact from './containers/Contact'
 import Hero from './containers/Hero'
 
 const App = () => {
@@ -7,6 +8,7 @@ const App = () => {
     <BackgroundColor>
       <Hero/>
       <About/>
+      <Contact/>
     </BackgroundColor>
   )
 }

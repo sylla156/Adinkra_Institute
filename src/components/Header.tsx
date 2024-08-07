@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="mx-3 sm:mx-16 md:mx-auto max-w-2xl pt-24 md:pt-48 lg:pt-42">
       <div className="mb-8 flex justify-center">
-        <div className="relative rounded-full border-1 px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 border-third">
+        <div className="hidden md:block relative rounded-full border-1 px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 border-third">
           {subTitle}{" "}
           <a href={button.link} className="font-semibold text-indigo-600">
             <span aria-hidden="true" className="absolute inset-0" />
