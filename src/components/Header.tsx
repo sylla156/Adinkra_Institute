@@ -1,46 +1,34 @@
-import { Button, Typography, Input } from "@material-tailwind/react";
+import { Button } from "@headlessui/react";
+import contentEnglish from "../content/contentEnglish";
 
 const Header = () => {
+  const { title, subTitle, content, button } = contentEnglish.header;
   return (
-    <header className=" p-8">
-      <div className="grid mt-16 min-h-[82vh] w-full lg:h-[54rem] md:h-[34rem] place-items-stretch bg-[url('/image/bg-hero-17.svg')] bg-center bg-contain bg-no-repeat">
-        <div className="container mx-auto px-4 text-center">
-          <Typography className="inline-flex text-xs rounded-lg border-[1.5px] border-blue-gray-50 bg-white py-1 lg:px-4 px-1 font-medium text-primary">
-            Exciting News! Introducing our latest innovation
-          </Typography>
-          <Typography
-            variant="h1"
-            color="blue-gray"
-            className="mx-auto my-6 w-full leading-snug  !text-2xl lg:max-w-3xl lg:!text-5xl"
-          >
-            Get ready to experience a new level of{" "}
-            <span className="text-green-500 leading-snug ">performance</span>{" "}
-            and{" "}
-            <span className="leading-snug text-green-500">functionality</span>.
-          </Typography>
-          <Typography
-            variant="lead"
-            className="mx-auto w-full !text-gray-500 lg:text-lg text-base"
-          >
-            The time is now for it to be okay to be great. For being a bright
-            color. For standing out.
-          </Typography>
-          <div className="mt-8 grid w-full place-items-start md:justify-center">
-            <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
-              <Input
-                color="gray"
-                label="Enter your email"
-                size="lg"
-                crossOrigin={undefined}
-              />
-              <Button color="gray" className="w-full px-4 md:w-[12rem]">
-                get started
-              </Button>
-            </div>
-          </div>
+    <div className="mx-3 sm:mx-auto max-w-2xl pt-32 lg:pt-48">
+      <div className="mb-8 flex justify-center">
+        <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+          {subTitle}{" "}
+          <a href={button.link} className="font-semibold text-indigo-600">
+            <span aria-hidden="true" className="absolute inset-0" />
+            {button.name} <span aria-hidden="true">&darr;</span>
+          </a>
         </div>
       </div>
-    </header>
+      <div className="text-center">
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          {title}
+        </h1>
+        <p className="mt-6 text-lg leading-8 text-gray-600">{content}</p>
+        <div className=" flex items-center justify-center gap-x-6">
+          <a
+            href={button.link}
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            <Button>{button.name} </Button>
+          </a>
+        </div>
+      </div>
+    </div>
   );
 };
 

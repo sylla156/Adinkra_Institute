@@ -1,98 +1,113 @@
-import {
-  Navbar,
-  Collapse,
-  Button,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
-import {
-  RectangleStackIcon,
-  UserCircleIcon,
-  CommandLineIcon,
-  Squares2X2Icon,
-} from "@heroicons/react/24/solid";
+import { useState } from "react";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import NavItem from "./NavItem";
-import React from "react";
-
+import contentEnglish from "../content/contentEnglish";
+import { Button } from "@material-tailwind/react";
 const Topbar = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen((cur) => !cur);
-
-  React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpen(false)
-    );
-  }, []);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { logo, navItems, contact } = contentEnglish.topBar;
   return (
-    <Navbar shadow={false} fullWidth className="border-0">
-      <div className="container mx-auto flex items-center justify-between">
-        <Typography color="blue-gray" className="text-lg font-bold">
-          Material Tailwind
-        </Typography>
-        <ul className="ml-10 hidden items-center gap-6 lg:flex">
-          <NavItem>
-            <RectangleStackIcon className="h-5 w-5" />
-            Pages
-          </NavItem>
-          <NavItem>
-            <UserCircleIcon className="h-5 w-5" />
-            Account
-          </NavItem>
-          <NavItem>
-            <Squares2X2Icon className="h-5 w-5" />
-            Blocks
-          </NavItem>
-          <NavItem>
-            <CommandLineIcon className="h-5 w-5" />
-            Docs
-          </NavItem>
-        </ul>
-        <div className="hidden items-center gap-4 lg:flex">
-          <Button variant="text">Log in</Button>
-          <Button color="gray">buy now</Button>
+    <header className="absolute inset-x-0 top-0 z-50">
+      <nav
+        aria-label="Global"
+        className="flex items-center justify-between p-6 lg:px-8"
+      >
+        <div className="flex lg:flex-1">
+          <a
+            href={navItems.find((item) => item.tag.includes("home"))?.link}
+            className="-m-1.5 p-1.5"
+          >
+            {logo}
+          </a>
         </div>
-        <IconButton
-          variant="text"
-          color="gray"
-          onClick={handleOpen}
-          className="ml-auto inline-block lg:hidden"
-        >
-          {open ? (
-            <XMarkIcon strokeWidth={2} className="h-6 w-6" />
-          ) : (
-            <Bars3Icon strokeWidth={2} className="h-6 w-6" />
-          )}
-        </IconButton>
-      </div>
-      <Collapse open={open}>
-        <div className="container mx-auto mt-3 border-t border-blue-gray-50 px-2 pt-4">
-          <ul className="flex flex-col gap-4">
-            <NavItem>
-              <RectangleStackIcon className="h-5 w-5" />
-              Pages
-            </NavItem>
-            <NavItem>
-              <UserCircleIcon className="h-5 w-5" />
-              Account
-            </NavItem>
-            <NavItem>
-              <Squares2X2Icon className="h-5 w-5" />
-              Blocks
-            </NavItem>
-            <NavItem>
-              <CommandLineIcon className="h-5 w-5" />
-              Docs
-            </NavItem>
-          </ul>
-          <div className="mt-6 mb-4 flex items-center gap-4">
-            <Button variant="text">Log in</Button>
-            <Button color="gray">buy now</Button>
+        <div className="flex lg:hidden">
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(true)}
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          >
+            <span className="sr-only">Open main menu</span>
+            <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+          </button>
+        </div>
+        <div className="hidden lg:flex lg:gap-x-12">
+          {navItems.map((navItem) => (
+            <div className="flex justify-start items-start" key={navItem.name}>
+              <navItem.Logo />
+              <a
+                href={navItem.link}
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                {navItem.name}
+              </a>
+            </div>
+          ))}
+        </div>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a
+            href={contact.link}
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            <Button size="sm">
+              {contact.name} <span aria-hidden="true">&rarr;</span>
+            </Button>
+          </a>
+        </div>
+      </nav>
+      <Dialog
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+        className="lg:hidden"
+      >
+        <div className="fixed inset-0 z-50" />
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="flex items-center justify-between">
+            <a
+              href={navItems.find((item) => item.tag.includes("home"))?.link}
+              className="-m-1.5 p-1.5"
+            >
+              {logo}
+            </a>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+            >
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+            </button>
           </div>
-        </div>
-      </Collapse>
-    </Navbar>
+          <div className="mt-6 flow-root">
+            <div className="-my-6 divide-y divide-gray-500/10">
+              <div className="space-y-2 py-6">
+                {navItems.map((navItem) => (
+                  <div
+                    className="flex justify-start items-start gap-x-2"
+                    key={navItem.name}
+                  >
+                    <navItem.Logo />
+                    <a
+                      href={navItem.link}
+                      className="text-sm font-semibold leading-6 text-gray-900"
+                    >
+                      {navItem.name}
+                    </a>
+                  </div>
+                ))}
+              </div>
+              <div className="py-6">
+                <a
+                  href="#"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  <Button> {contact.name}</Button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </DialogPanel>
+      </Dialog>
+    </header>
   );
 };
 
