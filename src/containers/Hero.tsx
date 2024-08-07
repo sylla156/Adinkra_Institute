@@ -1,15 +1,12 @@
 import Topbar from "../components/Topbar";
 import Header from "../components/Header";
-import BackgroundColor from "../components/BackgroundColor";
 
 const Hero = () => {
   return (
-    <>
+    <div className="min-h-[100dvh]">
       <Topbar />
-      <BackgroundColor>
-        <Header />
-      </BackgroundColor>
-    </>
+      <Header />
+    </div>
   );
 };
 

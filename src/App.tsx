@@ -1,10 +1,13 @@
+import BackgroundColor from './components/BackgroundColor'
+import About from './containers/About'
 import Hero from './containers/Hero'
 
 const App = () => {
   return (
-    <div>
+    <BackgroundColor>
       <Hero/>
-    </div>
+      <About/>
+    </BackgroundColor>
   )
 }
 

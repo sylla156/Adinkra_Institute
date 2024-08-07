@@ -6,8 +6,9 @@ import { Button } from "@material-tailwind/react";
 const Topbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { logo, navItems, contact } = contentEnglish.topBar;
+  const id = contentEnglish.topBar.navItems.find(item => item.tag.includes('home'))?.tag;
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header className="absolute inset-x-0 top-0 z-50" id={id}>
       <nav
         aria-label="Global"
         className="flex items-center justify-between p-6 lg:px-8"
@@ -32,12 +33,13 @@ const Topbar = () => {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navItems.map((navItem) => (
-            <div className="flex justify-start items-start" key={navItem.name}>
-              <navItem.Logo />
+            <div className="" key={navItem.name}>
               <a
                 href={navItem.link}
-                className="text-sm font-semibold leading-6 text-gray-900"
+                className="text-sm font-semibold leading-6 text-gray-900 flex justify-start items-center"
               >
+                {/* <navItem.Logo /> */}
+
                 {navItem.name}
               </a>
             </div>
