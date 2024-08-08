@@ -4,6 +4,7 @@ import Contact from "./containers/Contact";
 import Footer from "./containers/Footer";
 import Hero from "./containers/Hero";
 
+
 const App = () => {
   return (
     <BackgroundColor>

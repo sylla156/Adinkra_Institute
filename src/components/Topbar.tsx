@@ -3,6 +3,7 @@ import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import contentEnglish from "../content/contentEnglish";
 import { Button } from "@material-tailwind/react";
+import Logo from "./Logo";
 const Topbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { logo, navItems, contact } = contentEnglish.topBar;
@@ -18,7 +19,7 @@ const Topbar = () => {
             href={navItems.find((item) => item.tag.includes("home"))?.link}
             className="-m-1.5 p-1.5"
           >
-            {logo}
+            <Logo/>
           </a>
         </div>
         <div className="flex lg:hidden">

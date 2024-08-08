@@ -1,4 +1,3 @@
-import { Button } from "@material-tailwind/react";
 import contentEnglish from "../content/contentEnglish";
 
 const Header = () => {
@@ -31,9 +30,9 @@ const Header = () => {
         <div className=" flex items-center justify-center gap-x-6">
           <a
             href={button.link}
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-sm font-semibold leading-6 text-gray-900 mb-2 hover:underline transition-all"
           >
-            <Button variant="text">{button.name}</Button>
+            {button.name}
           </a>
         </div>
       </div>

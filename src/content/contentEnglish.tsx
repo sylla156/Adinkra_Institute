@@ -104,8 +104,8 @@ const contentEnglish = {
       "Explore the remarkable individuals who have been honored as Adinkra Distinguished Black Achievers. These leaders have made significant impacts in their communities across the United States",
     button: {
       name: "Learn more",
-      link: "/map",
-      tag: "#map",
+      link: "#about",
+      tag: "about",
     },
   },
   about: {
@@ -197,7 +197,7 @@ const contentEnglish = {
         ),
       },
       {
-        name: "hello@mail.com",
+        name: "adinkrainstitute@gmail.com",
         Logo: () => (
           <svg
             xmlns="http://www.w3.org/2000/svg"

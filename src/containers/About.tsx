@@ -7,7 +7,7 @@ const About = () => {
   const id = contentEnglish.topBar.navItems.find(item => item.tag.includes('about'))?.tag;
   return (
     <div
-      className="flex-col justify-center items-center mt-36 md:mt-0"
+      className="flex-col justify-center items-center pt-36 md:pt-46"
       id={id}
     >
       <Typography variant="h6" className="text-center text-primary">

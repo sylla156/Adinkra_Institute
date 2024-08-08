@@ -7,7 +7,7 @@ const Contact = () => {
     item.tag.includes("contact")
   )?.tag;
   return (
-    <div className="mt-36 md:mt-46" id={id}>
+    <div className="pt-36 md:pt-46" id={id}>
       <div className="md:flex md:justify-start md:gap-x-10 md:items-start mt-10 md:mt-12">
         <div className="flex-col h-full md:my-auto order-2 mt-5">
           <Typography variant="h3" className=" text-primary h-[10%] md:mb-5">
