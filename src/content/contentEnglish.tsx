@@ -71,7 +71,7 @@ const contentEnglish = {
       {
         name: "Contact Us",
         link: "#contact",
-        tag: "/contact",
+        tag: "contact",
         Logo: () => {
           return (
             <svg
@@ -93,7 +93,7 @@ const contentEnglish = {
     ],
     contact: {
       name: "Get in Touch",
-      link: "/contact",
+      link: "#contact",
     },
   },
   header: {

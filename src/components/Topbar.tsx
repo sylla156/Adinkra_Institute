@@ -11,7 +11,7 @@ const Topbar = () => {
     <header className="absolute inset-x-0 top-0 z-50" id={id}>
       <nav
         aria-label="Global"
-        className="flex items-center justify-between p-6 lg:px-8"
+        className="flex items-center justify-between py-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
           <a

@@ -3,8 +3,11 @@ import contentEnglish from "../content/contentEnglish";
 
 const Contact = () => {
   const { title, content, form, list } = contentEnglish.contact;
+  const id = contentEnglish.topBar.navItems.find((item) =>
+    item.tag.includes("contact")
+  )?.tag;
   return (
-    <div className="mt-36 md:mt-46 mx-3 sm:mx-16">
+    <div className="mt-36 md:mt-46" id={id}>
       <div className="md:flex md:justify-start md:gap-x-10 md:items-start mt-10 md:mt-12">
         <div className="flex-col h-full md:my-auto order-2 mt-5">
           <Typography variant="h3" className=" text-primary h-[10%] md:mb-5">
@@ -30,16 +33,8 @@ const Contact = () => {
             {form.title}
           </Typography>
           <form className="flex flex-col gap-6">
-            <Input
-              type="text"
-              label="Full name"
-              crossOrigin={undefined}
-            />
-            <Input
-              type="text"
-              label="Email"
-              crossOrigin={undefined}
-            />
+            <Input type="text" label="Full name" crossOrigin={undefined} />
+            <Input type="text" label="Email" crossOrigin={undefined} />
             <Textarea rows={6} label="Message" name="desc" />
 
             <Button type="submit">Send Message</Button>

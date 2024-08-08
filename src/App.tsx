@@ -1,16 +1,20 @@
-import BackgroundColor from './components/BackgroundColor'
-import About from './containers/About'
-import Contact from './containers/Contact'
-import Hero from './containers/Hero'
+import BackgroundColor from "./components/BackgroundColor";
+import About from "./containers/About";
+import Contact from "./containers/Contact";
+import Footer from "./containers/Footer";
+import Hero from "./containers/Hero";
 
 const App = () => {
   return (
     <BackgroundColor>
-      <Hero/>
-      <About/>
-      <Contact/>
+      <main className="mx-3 sm:mx-16">
+        <Hero />
+        <About />
+        <Contact />
+      </main>
+      <Footer />
     </BackgroundColor>
-  )
-}
+  );
+};
 
-export default App
+export default App;
