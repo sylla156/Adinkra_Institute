@@ -1,20 +1,36 @@
-import BackgroundColor from "./components/BackgroundColor";
-import About from "./containers/About";
-import Contact from "./containers/Contact";
-import Footer from "./containers/Footer";
-import Hero from "./containers/Hero";
-
+import React from "react";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
+import Loader from "./pages/loader/Loader";
 
 const App = () => {
+  const [errorPage, setErrorPage] = React.useState(false);
+  const [loader, setLoader] = React.useState(true);
+  React.useEffect(() => {
+    if (window.location.pathname !== "/") {
+      setErrorPage(true);
+    }
+    setTimeout(() => {
+      setLoader(false);
+    }, 2000);
+  }, []);
+
+  const handleError = (state: boolean) => {
+    setErrorPage(state);
+    setLoader(false)
+    window.location.pathname = "/";
+  };
+
   return (
-    <BackgroundColor>
-      <main className="mx-3 sm:mx-16 relative">
-        <Hero />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
-    </BackgroundColor>
+    <>
+      {loader ? (
+        <Loader />
+      ) : errorPage ? (
+        <Error handleError={handleError} />
+      ) : (
+        <Home />
+      )}
+    </>
   );
 };
 
