@@ -3,7 +3,7 @@ import mapboxgl, { LngLatBoundsLike } from "mapbox-gl";
 import { Dialog, IconButton, Typography } from "@material-tailwind/react";
 import photo from "../assets/photo.jpeg";
 
-mapboxgl.accessToken = import.meta.env.VITE_MAP_KEY
+mapboxgl.accessToken = import.meta.env.VITE_MAP_KEY;
 type stateData = { name: string };
 const Map = () => {
   const mapContainerRef = useRef(null);
@@ -55,11 +55,13 @@ const Map = () => {
                   geometry: {
                     type: "Polygon",
                     coordinates: [
-                      [-179.9, 15],
-                      [-49.9, 15],
-                      [-49.9, 74],
-                      [-179.9, 74],
-                      [-179.9, 15],
+                      [
+                        [-179.9, 15],
+                        [-49.9, 15],
+                        [-49.9, 74],
+                        [-179.9, 74],
+                        [-179.9, 15],
+                      ],
                     ],
                   },
                   properties: {}, // Ensure properties is included
