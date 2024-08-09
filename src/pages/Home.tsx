@@ -7,7 +7,7 @@ import Hero from "../containers/Hero";
 const Home = () => {
   return (
     <BackgroundColor>
-      <main className="mx-3 sm:mx-16 relative">
+      <main className="px-3 sm:px-10 md:px-16 relative max-w-[1500px] mx-auto">
         <Hero />
         <About />
         <Contact />

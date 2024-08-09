@@ -6,20 +6,22 @@ import { Button } from "@material-tailwind/react";
 import Logo from "./Logo";
 const Topbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { logo, navItems, contact } = contentEnglish.topBar;
-  const id = contentEnglish.topBar.navItems.find(item => item.tag.includes('home'))?.tag;
+  const { navItems, contact } = contentEnglish.topBar;
+  const id = contentEnglish.topBar.navItems.find((item) =>
+    item.tag.includes("home")
+  )?.tag;
   return (
     <header className="absolute inset-x-0 top-0 z-50" id={id}>
       <nav
         aria-label="Global"
-        className="flex items-center justify-between py-6 lg:px-8"
+        className="flex items-center justify-between py-6 px-5 lg:px-8"
       >
         <div className="flex lg:flex-1">
           <a
             href={navItems.find((item) => item.tag.includes("home"))?.link}
             className="-m-1.5 p-1.5"
           >
-            <Logo/>
+            <Logo />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -69,7 +71,7 @@ const Topbar = () => {
               href={navItems.find((item) => item.tag.includes("home"))?.link}
               className="-m-1.5 p-1.5"
             >
-              {logo}
+              <Logo />
             </a>
             <button
               type="button"
@@ -88,10 +90,11 @@ const Topbar = () => {
                     className="flex justify-start items-start gap-x-2"
                     key={navItem.name}
                   >
-                    <navItem.Logo />
+                    {/* <navItem.Logo /> */}
                     <a
                       href={navItem.link}
-                      className="text-sm font-semibold leading-6 text-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-sm font-semibold leading-6 text-gray-900 hover:underline transition-all"
                     >
                       {navItem.name}
                     </a>
