@@ -3,9 +3,7 @@ import mapboxgl, { LngLatBoundsLike } from "mapbox-gl";
 import { Dialog, IconButton, Typography } from "@material-tailwind/react";
 import photo from "../assets/photo.jpeg";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiYnJhaGltY29kZSIsImEiOiJjbDQya3Vya3EwMTJlM2NubDF5OG50Y2YwIn0.WJkJlnLIWfl2BzVtmo5OOA";
-
+mapboxgl.accessToken = import.meta.env.VITE_MAP_KEY
 type stateData = { name: string };
 const Map = () => {
   const mapContainerRef = useRef(null);

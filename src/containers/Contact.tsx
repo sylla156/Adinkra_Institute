@@ -1,13 +1,45 @@
 import { Button, Input, Textarea, Typography } from "@material-tailwind/react";
 import contentEnglish from "../content/contentEnglish";
+import { z } from "zod";
+import { Formik } from "formik";
+import { toFormikValidationSchema } from "zod-formik-adapter";
+import { useState } from "react";
+import AlertCustomize from "../components/AlertCustomize";
+
+const contactFormSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+  message: z.string().optional(),
+});
 
 const Contact = () => {
   const { title, content, form, list } = contentEnglish.contact;
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState(false);
+
   const id = contentEnglish.topBar.navItems.find((item) =>
     item.tag.includes("contact")
   )?.tag;
+  const initialValues: z.infer<typeof contactFormSchema> = {
+    name: "",
+    email: "",
+    message: "",
+  };
+
+  const handleSubmit = async (body: z.infer<typeof contactFormSchema>) => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      console.log(body);
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 3000);
+    }, 1000);
+  };
   return (
     <div className="pt-36 md:pt-46" id={id}>
+      <AlertCustomize open={alert} handleClose={setAlert} />
       <div className="md:flex md:justify-start md:gap-x-10 md:items-start mt-10 md:mt-12">
         <div className="flex-col h-full md:my-auto order-2 mt-5">
           <Typography variant="h3" className=" text-primary h-[10%] md:mb-5">
@@ -32,13 +64,84 @@ const Contact = () => {
           <Typography variant="h6" className=" mb:b-5">
             {form.title}
           </Typography>
-          <form className="flex flex-col gap-6">
-            <Input type="text" label="Full name" crossOrigin={undefined} />
-            <Input type="text" label="Email" crossOrigin={undefined} />
-            <Textarea rows={6} label="Message" name="desc" />
+          <Formik
+            initialValues={initialValues}
+            validationSchema={toFormikValidationSchema(contactFormSchema)}
+            onSubmit={handleSubmit}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+            }) => {
+              return (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                  <div>
+                    <Input
+                      type="text"
+                      label="Full name"
+                      name="name"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.name}
+                      error={errors.name && touched.name ? true : false}
+                      crossOrigin={undefined}
+                    />
+                    {errors.name && touched.name && (
+                      <Typography color="red" variant="small">
+                        {errors.name}
+                      </Typography>
+                    )}
+                  </div>
+                  <div>
+                    <Input
+                      type="text"
+                      label="Email"
+                      name="email"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.email}
+                      error={errors.email && touched.email ? true : false}
+                      crossOrigin={undefined}
+                    />
+                    {errors.email && touched.email && (
+                      <Typography color="red" variant="small">
+                        {errors.email}
+                      </Typography>
+                    )}
+                  </div>
+                  <div>
+                    <Textarea
+                      rows={6}
+                      label="Message"
+                      name="message"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.message}
+                      error={errors.message && touched.message ? true : false}
+                    />
 
-            <Button type="submit">Send Message</Button>
-          </form>
+                    {errors.message && touched.message && (
+                      <Typography color="red" variant="small">
+                        {errors.message}
+                      </Typography>
+                    )}
+                  </div>
+                  <Button
+                    disabled={isSubmitting}
+                    loading={loading}
+                    type="submit"
+                  >
+                    Send Message
+                  </Button>
+                </form>
+              );
+            }}
+          </Formik>
           <div className=" md:hidden mt-4 flex justify-center items-center gap-x-5">
             {list.map(
               (section: { name: string; Logo: React.ComponentType }) => (
