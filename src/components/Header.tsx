@@ -26,15 +26,15 @@ const Header = () => {
             }
           })}
         </h1>
-        <p className="mt-6 text-lg leading-8 text-gray-600">{content}</p>
-        <div className=" flex items-center justify-center gap-x-6">
+        <p className="mt-6 mb-2 text-lg leading-8 text-gray-600">{content}</p>
+        {/* <div className=" flex items-center justify-center gap-x-6">
           <a
             href={button.link}
             className="text-sm font-semibold leading-6 text-gray-900 mb-2 hover:underline transition-all"
           >
             {button.name}
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

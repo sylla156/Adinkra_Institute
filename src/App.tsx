@@ -17,7 +17,7 @@ const App = () => {
 
   const handleError = (state: boolean) => {
     setErrorPage(state);
-    setLoader(false)
+    setLoader(false);
     window.location.pathname = "/";
   };
 
