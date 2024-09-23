@@ -26,7 +26,7 @@ const AlertCustomize: React.FC<{
     <>
       <Alert
         open={open}
-        className="max-w-screen-md absolute right-0"
+        className="max-w-screen-md fixed right-1 top-1"
         icon={<Icon />}
         onClose={() => handleClose(false)}
       >

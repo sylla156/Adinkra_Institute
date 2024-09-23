@@ -110,6 +110,36 @@ const contentEnglish = {
       tag: "about",
     },
   },
+  team: {
+    title: "Our Team",
+    subTitle: "Meet the dedicated team behind the initiative.",
+    members: [
+      {
+        name: "Richard Seshie",
+        Subtitle: "President",
+        linkedin: "https://www.linkedin.com/in/richardseshie/",
+        Image: () => {
+          return <img src={"src/assets/Richard.jpeg"} alt="Richard Seshie" className="rounded-full w-32"/>;
+        },
+      },
+      {
+        name: "Jean Claude Gouesse",
+        linkedin: "https://www.linkedin.com/in/jeanclaudegouesse/",
+        Subtitle: "Vice President",
+        Image: () => {
+          return <img src={"src/assets/jean.jpeg"} alt="Jean Claude Gouesse" className="rounded-full w-32" />;
+        },
+      },
+      {
+        name: "Aminata Toure",
+        linkedin: "https://www.linkedin.com/in/aminata-toure-41a2a025a/",
+        Subtitle: "Project Manager",
+        Image: () => {
+          return <img src={"src/assets/amy.jpeg"} alt="Aminata Toure"  className="rounded-full w-32 h-32"/>;
+        },
+      },
+    ],
+  },
   about: {
     title: "About us",
     subTitle: "About Adinkra Distinguished Black Achievers Honors",
@@ -125,44 +155,26 @@ const contentEnglish = {
           title: "",
           content:
             "To recognize and support outstanding Black leaders who contribute significantly to their communities.",
-          Logo: () => <Logo small/>,
+          Logo: () => <Logo small />,
         },
         {
           title: "",
           content:
             "To inspire and empower individuals by highlighting exemplary role models and their achievements.",
-          Logo: () => <Logo small/>,
+          Logo: () => <Logo small />,
         },
       ],
     },
   },
   contact: {
     title: "Get in Touch",
-    content:
-      "We'd love to hear from you! Whether you have questions, or wish to collaborate with us, feel free to reach out.",
+    content:"We'd love to connect with you! Whether you have questions or are interested in collaborating, don’t hesitate to get in touch.",
     form: {
       title: "Contact Us",
     },
     list: [
       {
-        name: "+1(424) 535 3523",
-        Logo: () => (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="size-4"
-          >
-            <path
-              fillRule="evenodd"
-              d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
-              clipRule="evenodd"
-            />
-          </svg>
-        ),
-      },
-      {
-        name: "adinkrainstitute@gmail.com",
+        name: "team@adinkrafellowship.com",
         Logo: () => (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +188,7 @@ const contentEnglish = {
         ),
       },
       {
-        name: "Abidjan, Cote d'ivoire",
+        name: "8 the Green Suite G Dover, DE 19901-3618 United States",
         Logo: () => (
           <svg
             xmlns="http://www.w3.org/2000/svg"

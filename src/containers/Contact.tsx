@@ -26,19 +26,23 @@ const Contact = () => {
     message: "",
   };
 
-  const handleSubmit = async (body: z.infer<typeof contactFormSchema>) => {
+  const handleSubmit = async (
+    body: z.infer<typeof contactFormSchema>,
+    { resetForm }: { resetForm: () => void }
+  ) => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
       console.log(body);
       setAlert(true);
+      resetForm();
       setTimeout(() => {
         setAlert(false);
       }, 3000);
     }, 1000);
   };
   return (
-    <div className="pt-36 md:pt-46" id={id}>
+    <div className="md:pt-46" id={id}>
       <AlertCustomize open={alert} handleClose={setAlert} />
       <div className="md:flex md:justify-start md:gap-x-10 md:items-start mt-10 md:mt-12">
         <div className="flex-col h-full md:my-auto order-2 mt-5">
