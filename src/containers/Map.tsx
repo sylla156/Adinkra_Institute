@@ -1,14 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import mapboxgl, { LngLatBoundsLike } from "mapbox-gl";
-// import { Dialog, IconButton, Typography } from "@material-tailwind/react";
-// import photo from "../assets/photo.jpeg";
+import { Dialog, IconButton, Typography } from "@material-tailwind/react";
+import photo from "../assets/photo.jpeg";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAP_KEY;
-// type stateData = { name: string };
+type stateData = { name: string };
 const Map = () => {
   const mapContainerRef = useRef(null);
-  // const [showModal, setShowModal] = useState(false);
-  // const [selectedState, setSelectedState] = useState<stateData>({ name: "" });
+  const [showModal, setShowModal] = useState(false);
+  const [selectedState, setSelectedState] = useState<stateData>({ name: "" });
 
   useEffect(() => {
     if (mapContainerRef.current) {
@@ -150,10 +150,10 @@ const Map = () => {
 
         map.on("click", "state-fills", (e) => {
           if (e.features && e.features.length > 0) {
-            // const stateName = e.features[0].properties?.STATE_NAME;
-            // const stateData = getStateData(stateName); // Fetch state data based on the stateName
-            // setSelectedState(() => stateData);
-            // setShowModal(true);
+            const stateName = e.features[0].properties?.STATE_NAME;
+            const stateData = getStateData(stateName); // Fetch state data based on the stateName
+            setSelectedState(() => stateData);
+            setShowModal(true);
           }
         });
         map.on("mouseenter", "state-fills", () => {
@@ -181,17 +181,17 @@ const Map = () => {
     }
   }, []);
 
-  // const getStateData = (stateName: stateData) => {
-  //   // Replace with your data fetching logic
-  //   return {
-  //     name: stateName,
-  //   };
-  // };
+  const getStateData = (stateName: stateData) => {
+    // Replace with your data fetching logic
+    return {
+      name: stateName,
+    };
+  };
 
   return (
     <div className="relative w-full h-0 pb-[56.25%] overflow-hidden border-4 border-gray-800 rounded-lg">
       <div ref={mapContainerRef} className="absolute inset-0" />
-      {/* <Dialog
+      <Dialog
         open={showModal}
         handler={() => setShowModal((state) => !state)}
         className="pt-2 flex items-center justify-center z-50"
@@ -250,7 +250,7 @@ const Map = () => {
             ))}
           </div>
         </div>
-      </Dialog> */}
+      </Dialog>
     </div>
   );
 };

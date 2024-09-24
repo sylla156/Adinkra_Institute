@@ -1,4 +1,7 @@
 import Logo from "../components/Logo";
+import RichardPicture from "../assets/Richard.jpeg";
+import JeanPicture from "../assets/jean.jpeg";
+import AmyPicture from "../assets/amy.jpeg";
 
 const contentEnglish = {
   topBar: {
@@ -119,7 +122,13 @@ const contentEnglish = {
         Subtitle: "President",
         linkedin: "https://www.linkedin.com/in/richardseshie/",
         Image: () => {
-          return <img src={"src/assets/Richard.jpeg"} alt="Richard Seshie" className="rounded-full w-32"/>;
+          return (
+            <img
+              src={RichardPicture}
+              alt="Richard Seshie"
+              className="rounded-full w-32"
+            />
+          );
         },
       },
       {
@@ -127,7 +136,13 @@ const contentEnglish = {
         linkedin: "https://www.linkedin.com/in/jeanclaudegouesse/",
         Subtitle: "Vice President",
         Image: () => {
-          return <img src={"src/assets/jean.jpeg"} alt="Jean Claude Gouesse" className="rounded-full w-32" />;
+          return (
+            <img
+              src={JeanPicture}
+              alt="Jean Claude Gouesse"
+              className="rounded-full w-32"
+            />
+          );
         },
       },
       {
@@ -135,7 +150,13 @@ const contentEnglish = {
         linkedin: "https://www.linkedin.com/in/aminata-toure-41a2a025a/",
         Subtitle: "Project Manager",
         Image: () => {
-          return <img src={"src/assets/amy.jpeg"} alt="Aminata Toure"  className="rounded-full w-32 h-32"/>;
+          return (
+            <img
+              src={AmyPicture}
+              alt="Aminata Toure"
+              className="rounded-full w-32 h-32"
+            />
+          );
         },
       },
     ],
@@ -168,7 +189,8 @@ const contentEnglish = {
   },
   contact: {
     title: "Get in Touch",
-    content:"We'd love to connect with you! Whether you have questions or are interested in collaborating, don’t hesitate to get in touch.",
+    content:
+      "We'd love to connect with you! Whether you have questions or are interested in collaborating, don’t hesitate to get in touch.",
     form: {
       title: "Contact Us",
     },
