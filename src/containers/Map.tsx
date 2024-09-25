@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl, { LngLatBoundsLike } from "mapbox-gl";
 import { Dialog, IconButton, Typography } from "@material-tailwind/react";
-import photo from "../assets/photo.jpeg";
+import Laureat from "../components/Laureat";
+import BackgroundColor from "../components/BackgroundColor";
+import contentLaureat from "../content/contentLaureat";
+import { activeCountry } from "../content/contentFiltersLaureat";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAP_KEY;
 type stateData = { name: string };
@@ -89,6 +92,8 @@ const Map = () => {
           },
         });
 
+        
+
         // Add a layer for the state borders
         map.addLayer({
           id: "state-borders",
@@ -152,8 +157,10 @@ const Map = () => {
           if (e.features && e.features.length > 0) {
             const stateName = e.features[0].properties?.STATE_NAME;
             const stateData = getStateData(stateName); // Fetch state data based on the stateName
-            setSelectedState(() => stateData);
-            setShowModal(true);
+            if (activeCountry().includes(stateName)) {
+              setSelectedState(() => stateData);
+              setShowModal(true);
+            }
           }
         });
         map.on("mouseenter", "state-fills", () => {
@@ -197,59 +204,60 @@ const Map = () => {
         className="pt-2 flex items-center justify-center z-50"
         size="lg"
       >
-        <div className="relative bg-white rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-auto">
-          <IconButton
-            color="blue-gray"
-            size="sm"
-            variant="text"
-            onClick={() => setShowModal((state) => !state)}
-            className="ml-3"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-              className="h-5 w-5"
+        <BackgroundColor>
+          <div className="relative bg-white rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-auto">
+            <IconButton
+              color="blue-gray"
+              size="sm"
+              variant="text"
+              onClick={() => setShowModal((state) => !state)}
+              className="ml-3 mt-1"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </IconButton>
-          {selectedState && (
-            <>
-              {" "}
-              <Typography
-                variant="h3"
-                className=" text-primary h-[10%] md:mb-5 text-center uppercase"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                className="h-5 w-5"
               >
-                {selectedState.name}
-              </Typography>
-              <p className="text-[0.8rem] leading-5 text-gray-900 h-[10%] md:mb-10 text-center mx-4">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
-                quo corporis praesentium et explicabo nisi voluptatum quod,
-                animi quibusdam, recusandae nulla? Nihil vitae iure voluptas
-                ullam unde sit quas cupiditate!
-              </p>
-            </>
-          )}
-          <div className="p-4 flex justify-center items-center flex-wrap gap-x-10 gap-y-6">
-            {[
-              1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 1, 1, 1, 1, 1, 1, 1,
-              1, 1,
-            ].map((index) => (
-              <img
-                src={photo}
-                className="w-[180px] sm:w-[200px] md:[230px] rounded-lg border-10"
-                key={index}
-              />
-            ))}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </IconButton>
+            {selectedState && (
+              <>
+                {" "}
+                <Typography
+                  variant="h2"
+                  className="text-title mb-10 h-[10%] text-center uppercase"
+                >
+                  {selectedState.name}
+                </Typography>
+              </>
+            )}
+            <div className="p-4 flex justify-center items-center flex-wrap gap-x-10 gap-y-6">
+              {contentLaureat()
+                .filter(
+                  (Laureat) =>
+                    Laureat.state.toLowerCase() ===
+                    selectedState.name.toLowerCase()
+                )
+                .map(({ title, subtitle, content1 }, index) => (
+                  <Laureat
+                    key={index}
+                    index={index}
+                    content={content1}
+                    title={title}
+                    subtitle={subtitle}
+                  />
+                ))}
+            </div>
           </div>
-        </div>
+        </BackgroundColor>
       </Dialog>
     </div>
   );

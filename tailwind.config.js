@@ -9,11 +9,13 @@ export default withMT({
       hind: ["Hind", "sans-serif"],
     },
     extend: {
-      colors:{
-        primary:"#C6A650",
-        secondary:"#FCF976",
-        third:"#212121",
-      }
+      colors: {
+        primary: "#C6A650",
+        secondary: "#FCF976",
+        third: "#212121",
+        title: "#333333",
+        bg: "#F0EDE7",
+      },
     },
   },
   plugins: [],
