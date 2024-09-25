@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl, { LngLatBoundsLike } from "mapbox-gl";
-import { Dialog, IconButton, Typography } from "@material-tailwind/react";
+import { Chip, Dialog, IconButton, Typography } from "@material-tailwind/react";
 import Laureat from "../components/Laureat";
-import BackgroundColor from "../components/BackgroundColor";
 import contentLaureat from "../content/contentLaureat";
 import { activeCountry } from "../content/contentFiltersLaureat";
+import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAP_KEY;
 type stateData = { name: string };
 const Map = () => {
   const mapContainerRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
+  const [empty, setEmpty] = useState(false);
   const [selectedState, setSelectedState] = useState<stateData>({ name: "" });
 
   useEffect(() => {
@@ -92,8 +93,6 @@ const Map = () => {
           },
         });
 
-        
-
         // Add a layer for the state borders
         map.addLayer({
           id: "state-borders",
@@ -160,6 +159,11 @@ const Map = () => {
             if (activeCountry().includes(stateName)) {
               setSelectedState(() => stateData);
               setShowModal(true);
+              setEmpty(false);
+            } else {
+              setSelectedState(() => stateData);
+              setShowModal(true);
+              setEmpty(true);
             }
           }
         });
@@ -204,60 +208,83 @@ const Map = () => {
         className="pt-2 flex items-center justify-center z-50"
         size="lg"
       >
-        <BackgroundColor>
-          <div className="relative bg-white rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-auto">
-            <IconButton
-              color="blue-gray"
-              size="sm"
-              variant="text"
-              onClick={() => setShowModal((state) => !state)}
-              className="ml-3 mt-1"
+        <div className="relative bg-white rounded-lg  w-full max-w-4xl max-h-[90vh] overflow-auto">
+          <IconButton
+            color="blue-gray"
+            size="sm"
+            variant="text"
+            onClick={() => setShowModal((state) => !state)}
+            className="ml-3 mt-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              className="h-5 w-5"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-                className="h-5 w-5"
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </IconButton>
+          {selectedState && (
+            <>
+              {" "}
+              <Typography
+                variant="h2"
+                className="text-title mb-10 h-[10%] text-center uppercase"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </IconButton>
-            {selectedState && (
-              <>
-                {" "}
-                <Typography
-                  variant="h2"
-                  className="text-title mb-10 h-[10%] text-center uppercase"
-                >
-                  {selectedState.name}
-                </Typography>
-              </>
-            )}
-            <div className="p-4 flex justify-center items-center flex-wrap gap-x-10 gap-y-6">
-              {contentLaureat()
+                {selectedState.name}
+              </Typography>
+            </>
+          )}
+          <div className="p-4 flex justify-center items-center flex-wrap gap-x-10 gap-y-6">
+            {!empty ? (
+              contentLaureat()
                 .filter(
                   (Laureat) =>
                     Laureat.state.toLowerCase() ===
                     selectedState.name.toLowerCase()
                 )
-                .map(({ title, subtitle, content1 }, index) => (
+                .map(({ title, subtitle, content1, content2 }, index) => (
                   <Laureat
                     key={index}
                     index={index}
-                    content={content1}
+                    content1={content1}
+                    content2={content2}
                     title={title}
                     subtitle={subtitle}
                   />
-                ))}
-            </div>
+                ))
+            ) : (
+              <div className="min-w-[max-content]">
+                <ExclamationCircleIcon className="w-20 h-20 mx-auto" />
+                <Typography
+                  variant="h6"
+                  className="mt-8 mb-14 text-[18px] font-normal text-gray-500 mx-auto md:max-w-sm font-bold"
+                >
+                  The content for this state is coming soon. <br />
+                  Here is the follwing available states below.
+                </Typography>
+                <div className="flex gap-x-1">
+                  {activeCountry().map((state) => (
+                    <Chip
+                      size="sm"
+                      value={state}
+                      key={state}
+                      variant="ghost"
+                      className="w-[min-content]"
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-        </BackgroundColor>
+        </div>
       </Dialog>
     </div>
   );

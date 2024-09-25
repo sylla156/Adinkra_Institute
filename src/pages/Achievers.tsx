@@ -46,7 +46,7 @@ const Achievers = () => {
         onChangeState={handleState}
         onChangeSearch={handleSearch}
       />
-      <div className="p-4 flex justify-center items-center flex-wrap gap-x-10 gap-y-6">
+      <div className="p-4 mt-2 flex justify-center items-center flex-wrap gap-x-10 gap-y-6 max-h-[70dvh] overflow-y-scroll">
         {contentLaureat()
           .filter(
             (Laureat) =>
@@ -56,11 +56,12 @@ const Achievers = () => {
                 search.toLowerCase().split(" ").join("")
               )
           )
-          .map(({ title, subtitle, content1 }, index) => (
+          .map(({ title, subtitle, content1, content2 }, index) => (
             <Laureat
               key={index}
               index={index}
-              content={content1}
+              content1={content1}
+              content2={content2}
               title={title}
               subtitle={subtitle}
             />

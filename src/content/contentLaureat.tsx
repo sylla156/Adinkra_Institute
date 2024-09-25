@@ -94,16 +94,18 @@ const contentLaureat = () => [
     title: "CLIMATOLOGIST",
     subtitle: "Dr. Lesley-Ann Dupigny-Giroux",
     content1:
-      "Dr. Lesley-Ann Dupigny-Giroux is a distinguished climatologist and a Professor of Geography at the University of Vermont. She has served as the Vermont State Climatologist since 1997 and held the position of President of the American Association of State Climatologists from 2020 to 2022.  Dr. Dupigny-Giroux has received numerous accolades throughout her career. She was inducted as a Fellow of the American Meteorological Society in 2020, received the Association of Women Geoscientists Professional Excellence Award in 2018, and was honored with the Lifetime Achievement Award from the American Association of Geographers Climate Specialty Group in 2022.",
-    content2: null,
+      "Dr. Lesley-Ann Dupigny-Giroux is a distinguished climatologist and a Professor of Geography at the University of Vermont. She has served as the Vermont State Climatologist since 1997 and held the position of President of the American Association of State Climatologists from 2020 to 2022.",
+    content2:
+      "Dr. Dupigny-Giroux has received numerous accolades throughout her career. She was inducted as a Fellow of the American Meteorological Society in 2020, received the Association of Women Geoscientists Professional Excellence Award in 2018, and was honored with the Lifetime Achievement Award from the American Association of Geographers Climate Specialty Group in 2022.",
     state: "VERMONT",
   },
   {
     title: "EDUCATION",
     subtitle: "Lisa Ryan",
     content1:
-      "Lisa Ryan is the Associate Dean for Diversity, Equity, and Inclusion at Vermont Law and Graduate School where she is dedicated to fostering an inclusive and equitable environment within the academic community. She  holds an MS from Champlain College and a BA from Temple University. Throughout her career, Lisa has been recognized for her exceptional contributions to diversity and inclusion. She has received the Community Service Award for Rutland County by the Rutland Area Branch of the NAACP, highlighting her efforts and commitment to community service and equity.",
-    content2: null,
+      "Lisa Ryan is the Associate Dean for Diversity, Equity, and Inclusion at Vermont Law and Graduate School where she is dedicated to fostering an inclusive and equitable environment within the academic community. She  holds an MS from Champlain College and a BA from Temple University. Throughout her career, Lisa has been recognized for her exceptional contributions to diversity and inclusion",
+    content2:
+      "She has received the Community Service Award for Rutland County by the Rutland Area Branch of the NAACP, highlighting her efforts and commitment to community service and equity.",
     state: "VERMONT",
   },
   {
@@ -128,8 +130,9 @@ const contentLaureat = () => [
     title: "PROGRAM DIRECTOR",
     subtitle: "Belan Antensaye",
     content1:
-      "Belan Antensaye is a committed community leader and health equity advocate based in Vermont. She currently serves as the Strategy and Innovation Manager for the City of Burlington's Racial Equity, Inclusion, and Belonging Department and is a co-founder and strategic lead of the Vermont Health Equity Initiative (VHEI). This BIPOC-led organization focuses on addressing local health disparities through education and collective action. Additionally, she is a board member of the Vermont Professionals of Color Network, where she continues to promote equity and inclusion. Belan has also received several accolades, including the Ethiopian Diaspora Fellowship in 2020, which allowed her to work in Addis Ababa on hospital systems development and communications strategy.",
-    content2: null,
+      "Belan Antensaye is a committed community leader and health equity advocate based in Vermont. She currently serves as the Strategy and Innovation Manager for the City of Burlington's Racial Equity, Inclusion, and Belonging Department and is a co-founder and strategic lead of the Vermont Health Equity Initiative (VHEI).",
+    content2:
+      "This BIPOC-led organization focuses on addressing local health disparities through education and collective action. Additionally, she is a board member of the Vermont Professionals of Color Network, where she continues to promote equity and inclusion. Belan has also received several accolades, including the Ethiopian Diaspora Fellowship in 2020, which allowed her to work in Addis Ababa on hospital systems development and communications strategy.",
     state: "VERMONT",
   },
   {
@@ -181,8 +184,9 @@ const contentLaureat = () => [
     title: "WRITER",
     subtitle: "Kameisha Jerae Hodge",
     content1:
-      'Kameisha Jerae Hodge is a distinguished author, publisher, and public speaker. and the founder of Sovereign Noir Publications, a publishing company dedicated to elevating Black women writers. Hodge has published several poetry collections, including "Atlas of Consciousness," "Double Consciousness: An Autoethnic Guide to My Black American Experience," and "Woman. Queer. Black." Her works have earned her numerous awards, such as the Editor\'s Choice Award from Poetry.com in 2007 and 2008, the Silver Communicator Award from the International Academy of the Visual Arts in 2008, and the Poet of the Year award from Rainbow Rendezvous in 2016. Hodge is also a mentor for the First Ladies of Poverty Foundation and has worked with organizations such as NPR and Viacom.',
-    content2: null,
+      "Kameisha Jerae Hodge is a distinguished author, publisher, and public speaker. and the founder of Sovereign Noir Publications, a publishing company dedicated to elevating Black women writers",
+    content2:
+      ' Hodge has published several poetry collections, including "Atlas of Consciousness," "Double Consciousness: An Autoethnic Guide to My Black American Experience," and "Woman. Queer. Black." Her works have earned her numerous awards, such as the Editor\'s Choice Award from Poetry.com in 2007 and 2008, the Silver Communicator Award from the International Academy of the Visual Arts in 2008, and the Poet of the Year award from Rainbow Rendezvous in 2016. Hodge is also a mentor for the First Ladies of Poverty Foundation and has worked with organizations such as NPR and Viacom.',
     state: "WASHINGTON",
   },
   {
@@ -261,8 +265,9 @@ const contentLaureat = () => [
     title: "JOURNALIST",
     subtitle: "Linord Moudou",
     content1:
-      "Linord Moudou is a broadcast journalist with 17 years of coverage at Voice of America. She is  the Health Correspondent for VOA's daily TV show Africa54. She started her career at VOA as producer & host of Healthy Living, a weekly program covering African health issues. She has interviewed leading scientists and doctors, heads of states and governments, leaders and decision-makers to offer a fair representation on African and global issues. She is also a recipient of the US Lifetime Achievement Award.",
-    content2: null,
+      "Linord Moudou is a broadcast journalist with 17 years of coverage at Voice of America. She is  the Health Correspondent for VOA's daily TV show Africa54.",
+    content2:
+      " She started her career at VOA as producer & host of Healthy Living, a weekly program covering African health issues. She has interviewed leading scientists and doctors, heads of states and governments, leaders and decision-makers to offer a fair representation on African and global issues. She is also a recipient of the US Lifetime Achievement Award.",
     state: "WASHINGTON",
   },
 ];
