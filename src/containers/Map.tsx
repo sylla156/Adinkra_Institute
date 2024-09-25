@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl, { LngLatBoundsLike } from "mapbox-gl";
-import { Chip, Dialog, IconButton, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  Dialog,
+  IconButton,
+  Typography,
+} from "@material-tailwind/react";
 import Laureat from "../components/Laureat";
 import contentLaureat from "../content/contentLaureat";
 import { activeCountry } from "../content/contentFiltersLaureat";
@@ -271,15 +276,24 @@ const Map = () => {
                   Here is the follwing available states below.
                 </Typography>
                 <div className="flex gap-x-1">
-                  {activeCountry().map((state) => (
-                    <Chip
-                      size="sm"
-                      value={state}
-                      key={state}
-                      variant="ghost"
-                      className="w-[min-content]"
-                    />
-                  ))}
+                  {activeCountry()
+                    .slice(0, 4)
+                    .map((state) => {
+                      return (
+                        <Button
+                          size="sm"
+                          key={state}
+                          className="w-[min-content] cursor-pointer"
+                          onClick={() => {
+                            const newState = { name: state };
+                            setSelectedState(() => newState);
+                            setEmpty(false);
+                          }}
+                        >
+                          {state}
+                        </Button>
+                      );
+                    })}
                 </div>
               </div>
             )}
