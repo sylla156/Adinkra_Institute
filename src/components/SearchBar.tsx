@@ -30,7 +30,7 @@ const SearchBar: React.FC<{
             onClick={toggleDropdown}
           >
             <span id="dropdownSpan" className="text-ellipsis overflow-hidden">
-              {selectedOption}
+              {selectedOption.charAt(0).toUpperCase() + selectedOption.slice(1)}
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
