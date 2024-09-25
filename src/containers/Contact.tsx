@@ -5,12 +5,15 @@ import { Formik } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 import { useState } from "react";
 import AlertCustomize from "../components/AlertCustomize";
+import * as emailjs from "@emailjs/browser";
 
 const contactFormSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   message: z.string().optional(),
 });
+
+emailjs.send("service_df4fdh2", "template_cwdua0k");
 
 const Contact = () => {
   const { title, content, form, list } = contentEnglish.contact;
@@ -30,16 +33,7 @@ const Contact = () => {
     body: z.infer<typeof contactFormSchema>,
     { resetForm }: { resetForm: () => void }
   ) => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      console.log(body);
-      setAlert(true);
-      resetForm();
-      setTimeout(() => {
-        setAlert(false);
-      }, 3000);
-    }, 1000);
+    console.log("hello world");
   };
   return (
     <div className="md:pt-46" id={id}>

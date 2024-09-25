@@ -1,14 +1,31 @@
 import { Button, Typography } from "@material-tailwind/react";
-import TestImg from "../assets/photo.jpeg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+function removeAccents(str: string) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 
 const Laureat: React.FC<{
   index: number;
   title: string;
   subtitle: string;
   content1: string;
-  content2:string
-}> = ({ index, title, subtitle, content1,content2 }) => {
+  content2: string;
+  state:string;
+}> = ({ index, title, subtitle, content1, content2, state }) => {
+  const [TestImg, setTestImg] = useState<string | undefined>(undefined);
+  useEffect(() => {
+    const loadImage = async () => {
+      const img = await import(
+        `../assets/Achievers/${state}/${removeAccents(
+          subtitle.split(" ")[0]
+        )}.png`
+      );
+      setTestImg(img.default); // Use img.default if using React's Webpack setup
+    };
+
+    loadImage();
+  }, [subtitle]);
   const [visible, setVisible] = useState(false);
   const className = !visible
     ? "text-sm leading-6 text-gray-900 h-36 overflow-hidden"
@@ -20,7 +37,11 @@ const Laureat: React.FC<{
   return (
     <div className={mainClassName}>
       <div className="lg:w-[30%] h-full w-full flex justify-center items-center">
-        <img src={TestImg} alt="test" className="w-52 lg:w-full rounded-md mb-2 lg:mb-0" />
+        <img
+          src={TestImg}
+          alt="test"
+          className="w-52 lg:w-full rounded-md mb-2 lg:mb-0"
+        />
       </div>
 
       <div className="lg:w-[65%] h-full">
@@ -32,7 +53,8 @@ const Laureat: React.FC<{
         </Typography>
         <p className={className}>
           {content1}
-          <br /><br />
+          <br />
+          <br />
           {content2}
           {visible && (
             <Button

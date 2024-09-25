@@ -258,6 +258,7 @@ const Map = () => {
                 .map(({ title, subtitle, content1, content2 }, index) => (
                   <Laureat
                     key={index}
+                    state={selectedState.name}
                     index={index}
                     content1={content1}
                     content2={content2}
@@ -270,7 +271,7 @@ const Map = () => {
                 <ExclamationCircleIcon className="w-20 h-20 mx-auto" />
                 <Typography
                   variant="h6"
-                  className="mt-8 mb-14 text-[18px] font-normal text-gray-500 mx-auto md:max-w-sm font-bold"
+                  className="mt-8 mb-14 text-[18px]  text-gray-500 mx-auto md:max-w-sm font-bold"
                 >
                   The content for this state is coming soon. <br />
                   Here is the follwing available states below.

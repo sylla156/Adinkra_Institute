@@ -30,9 +30,9 @@ const contentEnglish = {
         },
       },
       {
-        name: "Achievers",
-        link: "achievers",
-        tag: "achievers",
+        name: "Honorees",
+        link: "honorees",
+        tag: "honorees",
         Logo: () => {
           return (
             <svg

@@ -7,12 +7,12 @@ const App = () => {
   const [errorPage, setErrorPage] = React.useState(false);
   const [loader, setLoader] = React.useState(true);
   React.useEffect(() => {
-    if (!["/", "/achievers"].includes(window.location.pathname)) {
+    if (!["/", "/honorees"].includes(window.location.pathname)) {
       setErrorPage(true);
     }
     setTimeout(() => {
       setLoader(false);
-    }, 10);
+    }, 1000);
   }, []);
 
   const handleError = (state: boolean) => {

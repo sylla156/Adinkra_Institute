@@ -16,9 +16,12 @@ const SearchBar: React.FC<{
 
   const handleOptionClick = (option: React.SetStateAction<string>) => {
     setSelectedOption(option);
-    onChangeState(selectedOption);
     setIsDropdownOpen(false);
   };
+
+  React.useEffect(() => {
+    onChangeState(selectedOption);
+  },[onChangeState, selectedOption]);
 
   return (
     <div className="w-full">
