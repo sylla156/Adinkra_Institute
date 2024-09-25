@@ -12,7 +12,7 @@ const App = () => {
     }
     setTimeout(() => {
       setLoader(false);
-    }, );
+    }, 1500);
   }, []);
 
   const handleError = (state: boolean) => {
