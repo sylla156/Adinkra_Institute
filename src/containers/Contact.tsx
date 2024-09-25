@@ -33,7 +33,25 @@ const Contact = () => {
     body: z.infer<typeof contactFormSchema>,
     { resetForm }: { resetForm: () => void }
   ) => {
-  console.log("hello world")
+    setLoading(true);
+    emailjs.init({ publicKey: import.meta.env.VITE_MAP_BREVO_HOST });
+    emailjs
+      .send(
+        import.meta.env.VITE_MAP_BREVO_PORT,
+        import.meta.env.VITE_MAP_BREVO_USER,
+        {
+          from_name: body.name,
+          to_name: "ibrahim.sylla@hub2.io",
+          message: body.message,
+        }
+      )
+      .then((res) => {
+        if (res.status) setAlert(true);
+      })
+      .finally(() => {
+        setLoading(false);
+        resetForm();
+      });
   };
   return (
     <div className="md:pt-46" id={id}>
