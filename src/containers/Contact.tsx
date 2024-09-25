@@ -33,7 +33,7 @@ const Contact = () => {
     body: z.infer<typeof contactFormSchema>,
     { resetForm }: { resetForm: () => void }
   ) => {
-    console.log("hello world");
+  console.log("hello world")
   };
   return (
     <div className="md:pt-46" id={id}>
