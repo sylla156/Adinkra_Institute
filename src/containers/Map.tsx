@@ -117,7 +117,7 @@ const Map = () => {
           source: "states",
           layout: {
             "text-field": "{STATE_NAME}", // Use existing state name property
-            "text-size": 12,
+            "text-size": 10,
             "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
           },
           paint: {
