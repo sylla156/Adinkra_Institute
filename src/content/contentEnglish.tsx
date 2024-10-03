@@ -147,7 +147,7 @@ const contentEnglish = {
   header: {
     title: "Adinkra Distinguished Black Achievers Honors",
     subTitle:
-      "Select any state on the map below to explore the 2024 lauréates !",
+      "Select any state on the map below to explore the 2024 laureates !",
     content:
       "Discover the exceptional individuals honored as Adinkra Distinguished Black Achievers. These leaders have made profound contributions to their communities throughout the United States.",
     button: {
