@@ -8,7 +8,7 @@ const contentEnglish = {
     logo: "Adinkra Institute",
     navItems: [
       {
-        name: "Homes",
+        name: "Home",
         link: "/#home",
         tag: "home",
         Logo: () => {
