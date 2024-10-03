@@ -4,7 +4,6 @@ import About from "../containers/About";
 import Contact from "../containers/Contact";
 import Footer from "../containers/Footer";
 import Hero from "../containers/Hero";
-import Press from "../containers/Press";
 import Teams from "../containers/Teams";
 import Achievers from "./Achievers";
 
@@ -17,7 +16,7 @@ const Home = () => {
             <Hero />
             <About />
             <Teams />
-            <Press />
+            {/* <Press /> */}
             <Contact />
           </>
         ) : (

@@ -50,7 +50,7 @@ const Achievers = () => {
         {contentLaureat()
           .filter(
             (Laureat) =>
-              Laureat.state.toLowerCase() === state.toLowerCase() &&
+              Laureat?.state?.toLowerCase() === state.toLowerCase() &&
               checkLetters(
                 Laureat.subtitle.toLowerCase().split(" ").join(""),
                 search.toLowerCase().split(" ").join("")
@@ -62,7 +62,7 @@ const Achievers = () => {
               index={index}
               state={state.charAt(0).toUpperCase() + state.slice(1,state.length)}
               content1={content1}
-              content2={content2}
+              content2={content2 ?? ""}
               title={title}
               subtitle={subtitle}
             />

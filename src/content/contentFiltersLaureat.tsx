@@ -1,1 +1,20 @@
-export const activeCountry = () => ["Connecticut", "Vermont", "Washington"];
+export const activeCountry = () => [
+    "Connecticut",
+    "Vermont",
+    "Washington",
+    "Idaho",
+    "North Dakota",
+    "Wyoming",
+    "Mississippi",
+    "Alaska",
+    "Maine",
+    "South Dakota",
+    "Utah",
+    "Louisiana",
+    "Rhode Island",
+    "Nebraska",
+    "Delaware",
+    "New Mexico",
+    "Iowa",
+    "Oregon",
+  ];

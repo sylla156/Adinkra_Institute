@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import mapboxgl, { LngLatBoundsLike } from "mapbox-gl";
+import { useEffect, useRef, useState } from 'react';
+import mapboxgl, { LngLatBoundsLike } from 'mapbox-gl';
 import {
   Button,
   Dialog,
   IconButton,
   Typography,
-} from "@material-tailwind/react";
-import Laureat from "../components/Laureat";
-import contentLaureat from "../content/contentLaureat";
-import { activeCountry } from "../content/contentFiltersLaureat";
-import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
+} from '@material-tailwind/react';
+import Laureat from '../components/Laureat';
+import contentLaureat from '../content/contentLaureat';
+import { activeCountry } from '../content/contentFiltersLaureat';
+import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAP_KEY;
 type stateData = { name: string };
@@ -17,13 +17,13 @@ const Map = () => {
   const mapContainerRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
   const [empty, setEmpty] = useState(false);
-  const [selectedState, setSelectedState] = useState<stateData>({ name: "" });
+  const [selectedState, setSelectedState] = useState<stateData>({ name: '' });
 
   useEffect(() => {
     if (mapContainerRef.current) {
       const map = new mapboxgl.Map({
         container: mapContainerRef.current,
-        style: "mapbox://styles/mapbox/dark-v11",
+        style: 'mapbox://styles/mapbox/dark-v11',
         center: [-95.7129, 37.0902], // Centered on the USA
         zoom: 5, // Adjust zoom level as needed
         maxBounds: [
@@ -43,26 +43,26 @@ const Map = () => {
       // Optionally, set maxBounds to prevent panning outside the United States
       map.setMaxBounds(bounds);
 
-      map.on("load", () => {
+      map.on('load', () => {
         // Add a source for the state boundaries
-        map.addSource("states", {
-          type: "geojson",
-          data: "https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson",
+        map.addSource('states', {
+          type: 'geojson',
+          data: 'https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson',
         });
 
         // Add a layer to mask other countries with a dark color
         map.addLayer({
-          id: "country-mask",
-          type: "fill",
+          id: 'country-mask',
+          type: 'fill',
           source: {
-            type: "geojson",
+            type: 'geojson',
             data: {
-              type: "FeatureCollection",
+              type: 'FeatureCollection',
               features: [
                 {
-                  type: "Feature",
+                  type: 'Feature',
                   geometry: {
-                    type: "Polygon",
+                    type: 'Polygon',
                     coordinates: [
                       [
                         [-179.9, 15],
@@ -80,84 +80,84 @@ const Map = () => {
           },
           layout: {},
           paint: {
-            "fill-color": "#000000", // Dark color to mask other countries
-            "fill-opacity": 1,
+            'fill-color': '#000000', // Dark color to mask other countries
+            'fill-opacity': 1,
           },
-          filter: ["all", ["!=", "iso_3166_1_alpha_3", "USA"]],
+          filter: ['all', ['!=', 'iso_3166_1_alpha_3', 'USA']],
         });
 
         // Add a layer for the state boundaries
         map.addLayer({
-          id: "state-fills",
-          type: "fill",
-          source: "states",
+          id: 'state-fills',
+          type: 'fill',
+          source: 'states',
           layout: {},
           paint: {
-            "fill-color": "#444444", // Dark color for states
-            "fill-opacity": 0.8,
+            'fill-color': '#444444', // Dark color for states
+            'fill-opacity': 0.8,
           },
         });
 
         // Add a layer for the state borders
         map.addLayer({
-          id: "state-borders",
-          type: "line",
-          source: "states",
+          id: 'state-borders',
+          type: 'line',
+          source: 'states',
           layout: {},
           paint: {
-            "line-color": "#ffffff",
-            "line-width": 1,
+            'line-color': '#ffffff',
+            'line-width': 1,
           },
         });
 
         // Existing layer to add labels (text) with color change
         map.addLayer({
-          id: "state-labels",
-          type: "symbol",
-          source: "states",
+          id: 'state-labels',
+          type: 'symbol',
+          source: 'states',
           layout: {
-            "text-field": "{STATE_NAME}", // Use existing state name property
-            "text-size": 10,
-            "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
+            'text-field': '{STATE_NAME}', // Use existing state name property
+            'text-size': 10,
+            'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
           },
           paint: {
-            "text-color": "#ffffff", // White color for state names
+            'text-color': '#ffffff', // White color for state names
           },
         });
 
         // Add a layer to hide other country names
         map.addLayer({
-          id: "country-labels",
-          type: "symbol",
-          source: "country-mask",
+          id: 'country-labels',
+          type: 'symbol',
+          source: 'country-mask',
           layout: {
-            "text-field": "{name}", // Adjust according to your data
-            "text-size": 12,
-            "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
+            'text-field': '{name}', // Adjust according to your data
+            'text-size': 12,
+            'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
           },
           paint: {
-            "text-color": "#000000", // Black color to hide country names
+            'text-color': '#000000', // Black color to hide country names
           },
-          filter: ["!=", "iso_3166_1_alpha_3", "USA"],
+          filter: ['!=', 'iso_3166_1_alpha_3', 'USA'],
         });
 
         // Change state color on hover
-        map.on("mousemove", "state-fills", (e) => {
+        map.on('mousemove', 'state-fills', (e) => {
           if (e.features && e.features.length > 0) {
             // Get the state name from the feature properties
             const stateName = e.features[0].properties?.STATE_NAME;
 
             // Change the fill color of the hovered state
-            map.setPaintProperty("state-fills", "fill-color", [
-              "case",
-              ["==", ["get", "STATE_NAME"], stateName],
-              "#C6A650", // Highlight color
-              "#444444", // Dark color for non-hovered states
+            map.setPaintProperty('state-fills', 'fill-color', [
+              'case',
+              ['==', ['get', 'STATE_NAME'], stateName],
+              '#C6A650', // Highlight color
+              '#444444', // Dark color for non-hovered states
             ]);
           }
         });
 
-        map.on("click", "state-fills", (e) => {
+        map.on('click', 'state-fills', (e) => {
           if (e.features && e.features.length > 0) {
             const stateName = e.features[0].properties?.STATE_NAME;
             const stateData = getStateData(stateName); // Fetch state data based on the stateName
@@ -172,20 +172,20 @@ const Map = () => {
             }
           }
         });
-        map.on("mouseenter", "state-fills", () => {
-          map.getCanvas().style.cursor = "pointer";
+        map.on('mouseenter', 'state-fills', () => {
+          map.getCanvas().style.cursor = 'pointer';
         });
 
-        map.on("mouseleave", "state-fills", () => {
-          map.getCanvas().style.cursor = "";
+        map.on('mouseleave', 'state-fills', () => {
+          map.getCanvas().style.cursor = '';
         });
         // Reset state color when not hovering
-        map.on("mouseleave", "state-fills", () => {
-          map.setPaintProperty("state-fills", "fill-color", "#444444");
+        map.on('mouseleave', 'state-fills', () => {
+          map.setPaintProperty('state-fills', 'fill-color', '#444444');
         });
 
         map.style.stylesheet.layers.forEach(function (layer) {
-          if (layer.type === "symbol") {
+          if (layer.type === 'symbol') {
             map.removeLayer(layer.id);
           }
         });
@@ -238,7 +238,7 @@ const Map = () => {
           </IconButton>
           {selectedState && (
             <>
-              {" "}
+              {' '}
               <Typography
                 variant="h2"
                 className="text-title mb-10 h-[10%] text-center uppercase"
@@ -252,7 +252,7 @@ const Map = () => {
               contentLaureat()
                 .filter(
                   (Laureat) =>
-                    Laureat.state.toLowerCase() ===
+                    Laureat?.state?.toLowerCase() ===
                     selectedState.name.toLowerCase()
                 )
                 .map(({ title, subtitle, content1, content2 }, index) => (
@@ -261,7 +261,7 @@ const Map = () => {
                     state={selectedState.name}
                     index={index}
                     content1={content1}
-                    content2={content2}
+                    content2={content2 ?? ''}
                     title={title}
                     subtitle={subtitle}
                   />
